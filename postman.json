@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+		"name": "Library_Management_System",
+		"description": "Postman for Library Management System API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register New Borrower",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"eric.wing@outlook.com\",\n  \"name\": \"Eric Wing\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/borrowers",
+					"host": ["{{base_url}}"],
+					"path": ["api", "borrowers"]
+				}
+			}
+		},
+		{
+			"name": "Register New Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"isbn\": \"0123456789\",\n  \"title\": \"Test Book\",\n  \"author\": \"Test Author\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/books",
+					"host": ["{{base_url}}"],
+					"path": ["api", "books"]
+				}
+			}
+		},
+		{
+			"name": "List Down All Books",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{base_url}}/api/books",
+					"host": ["{{base_url}}"],
+					"path": ["api", "books"]
+				}
+			}
+		},
+		{
+			"name": "Borrow Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"borrowerId\": {{borrower_id}},\n  \"bookId\": {{book_id}}\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/borrowers/{{borrower_id}}/borrow/{{book_id}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "borrowers", "{{borrower_id}}", "borrow", "{{book_id}}"]
+				}
+			}
+		},
+		{
+			"name": "Return a Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/borrowers/{{borrower_id}}/return/{{book_id}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "borrowers", "{{borrower_id}}", "return", "{{book_id}}"]
+				}
+			}
+		},
+		{
+			"name": "Verify Borrower Information",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{base_url}}/api/borrowers/{{borrower_id}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "borrowers", "{{borrower_id}}"]
+				}
+			}
+		},
+		{
+			"name": "Verify Book Information",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "{{base_url}}/api/books/{{book_id}}",
+					"host": ["{{base_url}}"],
+					"path": ["api", "books", "{{book_id}}"]
+				}
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8092"
+		},
+		{
+			"key": "borrower_id",
+			"value": "1"
+		},
+		{
+			"key": "book_id",
+			"value": "1"
+		}
+	]
+}
